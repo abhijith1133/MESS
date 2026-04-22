@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MessMate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-nav">
+        <h1>MessMate</h1>
+        <span id="current-month">April 2026</span>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="app-content">
+        
+        <!-- Dashboard Tab -->
+        <div id="view-dashboard" class="view active">
+            <div class="summary-grid">
+                <div class="card highlight">
+                    <span class="label">My Expense</span>
+                    <h2 id="my-total-expense">₹0</h2>
+                </div>
+                <div class="card">
+                    <span class="label">Total Mess Bill</span>
+                    <h2 id="total-mess-expense">₹0</h2>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>Friends' Dues</h3>
+                <button id="add-friend-btn-dash" class="text-btn">+ Add Friend</button>
+            </div>
+            <div class="list-container" id="friends-expense-list">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Meals Tab -->
+        <div id="view-diary" class="view" style="display: none;">
+            <div class="section-header" style="align-items: center; gap: 1rem;">
+                <h3>Daily Log</h3>
+                <input type="date" id="daily-log-date" class="date-picker-inline">
+            </div>
+            <div class="list-container" id="daily-log-container">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Friends Tab -->
+        <div id="view-friends" class="view" style="display: none;">
+            <div class="section-header">
+                <h3>My Friends</h3>
+                <button id="add-friend-btn-full" class="text-btn">+ Add Friend</button>
+            </div>
+            <div class="list-container" id="friends-full-list">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Floating Action Button for adding meals -->
+    <button class="fab" id="log-meal-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" id="nav-dashboard" class="nav-item active">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="#" id="nav-diary" class="nav-item">
+            <span class="icon">📓</span>
+            <span>Meals</span>
+        </a>
+        <a href="#" id="nav-friends" class="nav-item">
+            <span class="icon">👥</span>
+            <span>Friends</span>
+        </a>
+    </nav>
+
+    <!-- Log Meal Modal -->
+    <div class="modal" id="log-meal-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Log Meal</h3>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <form id="log-meal-form">
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" id="meal-date" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Meal Type</label>
+                    <select id="meal-type" required>
+                        <option value="Breakfast">Breakfast (₹30)</option>
+                        <option value="Lunch">Lunch (₹60)</option>
+                        <option value="Dinner">Dinner (₹30)</option>
+                        <option value="Snacks">Snacks (₹20)</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label>Who ate this meal?</label>
+                    <div class="checkbox-list" id="friends-checkboxes">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Save Meal</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Friend Modal -->
+    <div class="modal" id="add-friend-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Friend</h3>
+                <button class="close-btn" id="close-friend-modal-btn">&times;</button>
+            </div>
+            <form id="add-friend-form">
+                <div class="input-group">
+                    <input type="text" id="friend-name-input" placeholder="Enter friend's name" required>
+                </div>
+                <button type="submit" class="btn-primary">Add Friend</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
