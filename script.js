@@ -2,6 +2,7 @@
 const firebaseConfig = {
   apiKey: "AIzaSyDcDPz8X77m0s7EAUwpcpHgKKGsUz-wfzo",
   authDomain: "curanova-c39f7.firebaseapp.com",
+  databaseURL: "https://curanova-c39f7-default-rtdb.firebaseio.com",
   projectId: "curanova-c39f7",
   storageBucket: "curanova-c39f7.firebasestorage.app",
   messagingSenderId: "624941811143",
